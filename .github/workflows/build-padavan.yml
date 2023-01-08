@@ -34,9 +34,11 @@ jobs:
         git clone https://github.com/xxtt8812/CoreELEC.git
         cd CoreELEC
         git checkout coreelec-19
+        ./scripts/clean linux
         ./scripts/build linux
+        make
         mkdir -p /opt/images/
-        sudo mv -f *.img /opt/images/
+        sudo mv -f *.tar /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
