@@ -36,9 +36,9 @@ jobs:
         git checkout coreelec-19
         ./scripts/clean linux
         ./scripts/build linux
-        make
+        make image
         mkdir -p /opt/images/
-        sudo mv -f *.tar /opt/images/
+        sudo mv -f *.img.gz /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
