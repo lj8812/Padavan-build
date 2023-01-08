@@ -31,13 +31,15 @@ jobs:
     - name: Clone source code
       run: |
         cd ~
-        git clone https://github.com/CoreELEC/CoreELEC.git
+        git clone https://github.com/xxtt8812/CoreELEC.git
         cd CoreELEC
         git checkout coreelec-19
-        make image
+        ./scripts/build linux
+        mkdir -p /opt/images/
+        sudo mv -f *.img.gz /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: Padavan-packages
-        path: /CoreELEC/target
+        path: /opt/images
