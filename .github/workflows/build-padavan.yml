@@ -27,7 +27,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo apt-get update
-        sudo apt install build-essential make gcc git xfonts-utils xsltproc libxml-parser-perl libparse-yapp-perl gperf lzop patchutils ninja texinfo gzip squashfs-tools
+        sudo apt install build-essential make gcc git xfonts-utils xsltproc libxml-parser-perl libparse-yapp-perl gperf lzop patchutils texinfo gzip squashfs-tools
     - name: Clone source code
       run: |
         cd ~
@@ -35,9 +35,9 @@ jobs:
         cd CoreELEC
         git checkout coreelec-19
         ./scripts/build linux
-        make image
+        make
         mkdir -p /opt/images/
-        sudo mv -f *.img.gz /opt/images/
+        sudo mv -f *.tar /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
