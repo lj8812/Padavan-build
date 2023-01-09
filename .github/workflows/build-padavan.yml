@@ -27,14 +27,13 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo apt-get update
-        sudo apt install build-essential make gcc git xfonts-utils xsltproc libxml-parser-perl libparse-yapp-perl gperf lzop patchutils
+        sudo apt install build-essential make gcc git xfonts-utils xsltproc libxml-parser-perl libparse-yapp-perl gperf lzop patchutils ninja texinfo gzip squashfs-tools
     - name: Clone source code
       run: |
         cd ~
         git clone https://github.com/xxtt8812/CoreELEC.git
         cd CoreELEC
         git checkout coreelec-19
-        ./scripts/clean linux
         ./scripts/build linux
         make image
         mkdir -p /opt/images/
